@@ -1,0 +1,2 @@
+recursive-include outcall/templates *
+recursive-include outcall/static *
