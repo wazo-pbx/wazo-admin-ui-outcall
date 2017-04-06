@@ -6,7 +6,7 @@ from flask_wtf import FlaskForm
 
 from wtforms.fields import (SubmitField,
                             StringField,
-                            SelectField,
+                            SelectMultipleField,
                             FieldList,
                             FormField)
 from wtforms.validators import InputRequired
@@ -25,5 +25,5 @@ class OutcallForm(FlaskForm):
     name = StringField('Name', [InputRequired()])
     description = StringField('Description')
     extensions = FieldList(FormField(OutcallExtensionForm))
-    trunk = SelectField('Trunks', choices=[])
+    trunk = SelectMultipleField('Trunks', choices=[])
     submit = SubmitField('Submit')
