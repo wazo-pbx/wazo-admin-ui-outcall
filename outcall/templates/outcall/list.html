@@ -28,6 +28,9 @@
       {% call build_form() %}
         {% call add_default_fields(form=form, submit_value="Add") %}
           {{ render_field(form.name) }}
+          {{ render_field(form.description) }}
+          {{ render_field(form.trunk, data_listing_href=url_for(listing_urls['trunk'])) }}
+          {{ render_field(form.extensions) }}
         {% endcall %}
       {% endcall %}
     {% endcall %}
