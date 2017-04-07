@@ -16,9 +16,8 @@ class Plugin(object):
 
     def load(self, dependencies):
         core = dependencies['flask']
-        config = dependencies['config']
 
-        OutcallView.service = OutcallService(config['confd'])
+        OutcallView.service = OutcallService()
         OutcallView.register(outcall, route_base='/outcalls')
         register_flaskview(outcall, OutcallView)
 
