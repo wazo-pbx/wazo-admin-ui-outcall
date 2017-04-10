@@ -5,32 +5,30 @@
 from __future__ import unicode_literals
 
 from flask_menu.classy import classy_menu_item
-from marshmallow import fields
 
 from wazo_admin_ui.helpers.classful import BaseView
-from wazo_admin_ui.helpers.mallow import BaseSchema, BaseAggregatorSchema, extract_form_fields
 
 from .form import OutcallForm
-
-
-class OutcallSchema(BaseSchema):
-
-    class Meta:
-        fields = extract_form_fields(OutcallForm)
-
-
-class AggregatorSchema(BaseAggregatorSchema):
-    _main_resource = 'outcall'
-
-    outcall = fields.Nested(OutcallSchema)
 
 
 class OutcallView(BaseView):
 
     form = OutcallForm
     resource = 'outcall'
-    schema = AggregatorSchema
 
     @classy_menu_item('.outcalls', 'Outcalls', order=4, icon="long-arrow-left")
     def index(self):
         return super(OutcallView, self).index()
+
+    def _map_resources_to_form(self, resources):
+        return self.form(data=resources['outcall'])
+
+    def _map_form_to_resources(self, form, form_id=None):
+        resources = {'outcall': form.to_dict()}
+        if form_id:
+            resources['outcall']['id'] = form_id
+        return resources
+
+    def _map_resources_to_form_errors(self, form, resources):
+        form.populate_errors(resources.get('outcall', {}))
+        return form
