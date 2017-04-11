@@ -7,5 +7,4 @@ from wazo_admin_ui.helpers.service import BaseConfdService
 
 class OutcallService(BaseConfdService):
 
-    resource_name = 'outcall'
     resource_confd = 'outcalls'

@@ -6,8 +6,8 @@
 
 {% block content %}
   {% call build_section_row() %}
-    {% call build_form_box('Outcall', resources.outcall.name, 'long-arrow-left') %}
-      {% call build_form(action=url_for('.OutcallView:put', id=resources.outcall.id)) %}
+    {% call build_form_box('Outcall', resource.name, 'long-arrow-left') %}
+      {% call build_form(action=url_for('.OutcallView:put', id=resource.id)) %}
         {% call add_default_fields(form=form, submit_value="Update") %}
           {{ render_field(form.name) }}
         {% endcall %}

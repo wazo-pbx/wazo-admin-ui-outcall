@@ -20,15 +20,6 @@ class OutcallView(BaseView):
     def index(self):
         return super(OutcallView, self).index()
 
-    def _map_resources_to_form(self, resources):
-        return self.form(data=resources['outcall'])
-
-    def _map_form_to_resources(self, form, form_id=None):
-        resources = {'outcall': form.to_dict()}
-        if form_id:
-            resources['outcall']['id'] = form_id
-        return resources
-
     def _map_resources_to_form_errors(self, form, resources):
         form.populate_errors(resources.get('outcall', {}))
         return form
