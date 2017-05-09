@@ -1,9 +1,9 @@
-name: admin-ui-user
+name: admin-ui-outcall
 namespace: official
 version: 0.0.1
 author: Wazo Team
-display_name: User
+display_name: Outcalls
 tags:
   - beta
-  - users
-homepage: https://github.com/wazo-pbx/wazo-admin-ui-user
+  - routing
+homepage: https://github.com/wazo-pbx/wazo-admin-ui-outcall
