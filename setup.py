@@ -23,7 +23,7 @@ setup(
 
     entry_points={
         'wazo_admin_ui.plugins': [
-            'outcall = outcall.plugin:Plugin',
+            'outcall = wazo_plugind_admin_ui_outcall_official.plugin:Plugin',
         ]
     }
 )
