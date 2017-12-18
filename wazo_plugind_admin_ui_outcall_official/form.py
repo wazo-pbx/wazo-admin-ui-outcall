@@ -25,4 +25,5 @@ class OutcallForm(BaseForm):
     description = StringField('Description')
     extensions = FieldList(FormField(OutcallExtensionForm))
     trunk = SelectMultipleField('Trunks', choices=[])
+    preprocess_subroutine = StringField('Preprocess Subroutine')
     submit = SubmitField('Submit')
