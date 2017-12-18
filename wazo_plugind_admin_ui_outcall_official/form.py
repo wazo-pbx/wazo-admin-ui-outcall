@@ -28,4 +28,5 @@ class OutcallForm(BaseForm):
     trunk = SelectMultipleField('Trunks', choices=[])
     preprocess_subroutine = StringField('Preprocess Subroutine')
     internal_caller_id = BooleanField('Internal Caller ID')
+    ring_time = IntegerField('Ring time', [NumberRange(min=0)])
     submit = SubmitField('Submit')
