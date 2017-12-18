@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-3.0+
 
 from wtforms.fields import (SubmitField,
+                            BooleanField,
                             StringField,
                             SelectMultipleField,
                             FieldList,
@@ -26,4 +27,5 @@ class OutcallForm(BaseForm):
     extensions = FieldList(FormField(OutcallExtensionForm))
     trunk = SelectMultipleField('Trunks', choices=[])
     preprocess_subroutine = StringField('Preprocess Subroutine')
+    internal_caller_id = BooleanField('Internal Caller ID')
     submit = SubmitField('Submit')
