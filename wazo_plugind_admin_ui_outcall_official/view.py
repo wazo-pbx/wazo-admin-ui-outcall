@@ -30,6 +30,7 @@ class OutcallView(BaseView):
         form.trunks_id.choices = self._build_set_choices_trunks(form.trunks)
         for form_extension in form.extensions:
             form_extension.context.choices = self._build_set_choices_context(form_extension)
+        form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
         return form
 
     def _build_set_choices_context(self, extension):
@@ -55,6 +56,11 @@ class OutcallView(BaseView):
                 elif trunk_data['endpoint_custom']:
                     results.append((trunk_data['id'], trunk_data['endpoint_custom']['interface']))
         return results
+
+    def _build_set_choices_schedule(self, schedule):
+        if not schedule.form.id.data or schedule.form.id.data == 'None':
+            return []
+        return [(schedule.form.id.data, schedule.form.name.data)]
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super(OutcallView, self)._map_form_to_resources(form, form_id)

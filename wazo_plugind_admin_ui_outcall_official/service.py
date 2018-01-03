@@ -26,11 +26,13 @@ class OutcallService(BaseConfdService):
         outcall['id'] = super(OutcallService, self).create(outcall)['id']
         self._update_trunks_relations(outcall)
         self._update_extensions_relations(outcall)
+        self._update_schedules_relations(outcall)
 
     def update(self, outcall):
         super(OutcallService, self).update(outcall)
         self._update_trunks_relations(outcall)
         self._update_extensions_relations(outcall)
+        self._update_schedules_relations(outcall)
 
     def _update_trunks_relations(self, outcall):
         if outcall.get('trunks'):
@@ -85,3 +87,14 @@ class OutcallService(BaseConfdService):
                                               external_prefix=extension['external_prefix'],
                                               strip_digits=extension['strip_digits'],
                                               caller_id=extension['caller_id'])
+
+    def _update_schedules_relations(self, outcall):
+        schedules = outcall.get('schedules')
+        if schedules:
+            existing_outcall = confd.outcalls.get(outcall)
+            if existing_outcall['schedules']:
+                schedule_id = existing_outcall['schedules'][0]['id']
+                confd.outcalls(outcall).remove_schedule(schedule_id)
+
+            if schedules[0].get('id'):
+                confd.outcalls(outcall).add_schedule(schedules[0])

@@ -16,6 +16,11 @@ from wtforms.validators import InputRequired, Length, NumberRange
 from wazo_admin_ui.helpers.form import BaseForm
 
 
+class ScheduleForm(BaseForm):
+    id = SelectField('Schedule', choices=[])
+    name = HiddenField()
+
+
 class OutcallExtensionForm(BaseForm):
     id = HiddenField()
     context = SelectField(l_('Context'), [InputRequired()], choices=[])
@@ -40,4 +45,5 @@ class OutcallForm(BaseForm):
     preprocess_subroutine = StringField(l_('Preprocess Subroutine'))
     internal_caller_id = BooleanField(l_('Internal Caller ID'))
     ring_time = IntegerField(l_('Ring time'), [NumberRange(min=0)])
+    schedules = FieldList(FormField(ScheduleForm), min_entries=1)
     submit = SubmitField(l_('Submit'))
