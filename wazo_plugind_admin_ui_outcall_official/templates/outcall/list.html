@@ -12,7 +12,7 @@
           <th>{{ _('Name') }}</th>
           <th>{{ _('Description') }}</th>
         {% endcall %}
-        {% call(outcall) build_list_table_rows(resource_list['items']) %}\
+        {% call(outcall) build_list_table_rows(resource_list['items']) %}
           <td>{{ outcall.name }}</td>
           <td>{{ outcall.description }}</td>
         {% endcall %}
