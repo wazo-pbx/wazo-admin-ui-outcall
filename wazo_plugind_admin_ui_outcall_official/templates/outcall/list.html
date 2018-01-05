@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Outcall', '', 'long-arrow-right', ['List']) }}
+  {{ build_breadcrumb('Outcall', '', 'long-arrow-left', ['List']) }}
 {% endblock %}
 
 {% block content %}
   <section class="content">
-    {% call build_list_containers('Outcalls', 'long-arrow-right') %}
+    {% call build_list_containers('Outcalls', 'long-arrow-left') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.OutcallView:get', id=''), delete=url_for('.OutcallView:delete', id='')) %}
           <th>{{ _('Name') }}</th>
