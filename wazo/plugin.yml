@@ -1,16 +1,17 @@
+plugin_format_version: 2
 name: admin-ui-outcall
 namespace: official
-version: 1.1.0-3
+version: 1.1.0-4
 author: Wazo Team
 display_name: Outcalls
 min_wazo_version: 18.01
 tags:
-  - beta
   - routing
 homepage: https://github.com/wazo-pbx/wazo-admin-ui-outcall
 depends:
   - name: admin-ui-context
     namespace: official
-    version: 1.1.1-2
+    version: ">= 1.1.1-2"
   - name: admin-ui-trunk
     namespace: official
+    version: ">= 1.1.1-4"
