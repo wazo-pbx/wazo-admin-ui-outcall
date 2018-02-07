@@ -4,7 +4,7 @@ namespace: official
 version: 1.1.0-4
 author: Wazo Team
 display_name: Outcalls
-min_wazo_version: 18.01
+min_wazo_version: 18.02
 tags:
   - routing
 homepage: https://github.com/wazo-pbx/wazo-admin-ui-outcall
