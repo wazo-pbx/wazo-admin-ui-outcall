@@ -1,4 +1,4 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask import jsonify, request
@@ -12,13 +12,12 @@ from .form import OutcallForm
 
 
 class OutcallView(BaseView):
-
     form = OutcallForm
     resource = 'outcall'
 
     @classy_menu_item('.outcalls', l_('Outcalls'), order=4, icon="long-arrow-left")
     def index(self):
-        return super(OutcallView, self).index()
+        return super().index()
 
     def _map_resources_to_form(self, resource):
         trunks_id = [trunk['id'] for trunk in resource['trunks']]
@@ -33,6 +32,7 @@ class OutcallView(BaseView):
         for form_extension in form.extensions:
             form_extension.context.choices = self._build_set_choices_context(form_extension)
         form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
+        form.call_permissions[0].form.id.choices = self._build_set_choices_callpermissions(form.call_permissions[0])
         return form
 
     def _build_set_choices_context(self, extension):
@@ -64,8 +64,13 @@ class OutcallView(BaseView):
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 
+    def _build_set_choices_callpermissions(self, callpermissions):
+        if not callpermissions.form.id.data or callpermissions.form.id.data == 'None':
+            return []
+        return [(callpermissions.form.id.data, callpermissions.form.name.data)]
+
     def _map_form_to_resources(self, form, form_id=None):
-        resource = super(OutcallView, self)._map_form_to_resources(form, form_id)
+        resource = super()._map_form_to_resources(form, form_id)
         if 'trunks_id' in resource:
             resource['trunks'] = [{'id': int(trunk_id)} for trunk_id in resource['trunks_id']]
         else:

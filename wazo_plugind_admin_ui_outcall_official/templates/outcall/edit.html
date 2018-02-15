@@ -13,6 +13,7 @@
         {{ add_tab_navigation_item('outcall', _('Outcall'), active=True) }}
         {{ add_tab_navigation_item('extensions', _('Extensions')) }}
         {{ add_tab_navigation_item('schedule', _('Schedule')) }}
+        {{ add_tab_navigation_item('callpermission', _('Call Permissions')) }}
       {% endcall %}
 
       {% call build_form(action=url_for('.OutcallView:put', id=resource.id)) %}
@@ -65,6 +66,16 @@
                                 data_listing_href=url_for(listing_urls['schedule']),
                                 data_allow_clear=True,
                                 data_placeholder='Choose Schedules') }}
+            {% endcall %}
+          {% endcall %}
+
+          {% call build_tab_content_item('callpermission') %}
+            {% call add_default_fields(form=form, submit_value="Update") %}
+                {{ render_field(form.call_permissions[0]['name']) }}
+                {{ render_field(form.call_permissions[0]['id'],
+                                data_listing_href=url_for(listing_urls['callpermission']),
+                                data_allow_clear=True,
+                                data_placeholder='Choose Call Permissions') }}
             {% endcall %}
           {% endcall %}
 
