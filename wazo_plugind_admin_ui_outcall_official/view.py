@@ -1,10 +1,12 @@
 # Copyright 2017 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
+from flask import jsonify, request
 from flask_babel import lazy_gettext as l_
 from flask_menu.classy import classy_menu_item
 
-from wazo_admin_ui.helpers.classful import BaseView
+from wazo_admin_ui.helpers.classful import BaseView, LoginRequiredView
+from wazo_admin_ui.helpers.classful import extract_select2_params, build_select2_response
 
 from .form import OutcallForm
 
@@ -79,3 +81,12 @@ class OutcallView(BaseView):
         form.populate_errors(resources.get('outcall', {}))
         form.populate_errors(resources.get('extensions', {}))
         return form
+
+
+class OutcallDestinationView(LoginRequiredView):
+
+    def list_json(self):
+        params = extract_select2_params(request.args)
+        outcalls = self.service.list(**params)
+        results = [{'id': outcall['id'], 'text': outcall['name']} for outcall in outcalls['items']]
+        return jsonify(build_select2_response(results, outcalls['total'], params))
