@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Outcall', '', 'long-arrow-left', ['List']) }}
+  {{ build_breadcrumb(_('Outcall'), '', 'long-arrow-left', [_('List')]) }}
 {% endblock %}
 
 {% block content %}
   <section class="content">
-    {% call build_list_containers('Outcalls', 'long-arrow-left') %}
+    {% call build_list_containers(_('Outcalls'), 'long-arrow-left') %}
       {% call build_list_table() %}
         {% call build_list_table_headers(get=url_for('.OutcallView:get', id=''), delete=url_for('.OutcallView:delete', id='')) %}
           <th>{{ _('Name') }}</th>
@@ -19,9 +19,9 @@
       {% endcall %}
     {% endcall %}
 
-    {% call build_hidden_add_containers('Add Outcall') %}
+    {% call build_hidden_add_containers(_('Add Outcall')) %}
       {% call build_form() %}
-        {% call add_default_fields(form=form, submit_value="Add") %}
+        {% call add_default_fields(form=form, submit_value=_('Add')) %}
           {{ render_field(form.name) }}
           {{ render_field(form.description) }}
           {{ render_field(form.trunks_id, data_listing_href=url_for(listing_urls['trunk'])) }}
@@ -64,7 +64,7 @@
     <td>{{ render_field(extension.context,
                         with_label=False,
                         class_='outcall-context',
-                        placeholder='Choose Context',
+                        placeholder=_('Choose Context'),
                         data_listing_href=url_for(listing_urls['context_by_type'], type_='outcall')) }}</td>
     <td>{{ render_field(extension.exten, with_label=False) }}</td>
     <td>{{ render_field(extension.caller_id, with_label=False) }}</td>

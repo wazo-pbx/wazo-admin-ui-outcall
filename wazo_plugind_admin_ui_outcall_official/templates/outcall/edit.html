@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content_header %}
-  {{ build_breadcrumb('Outcalls', '', 'long-arrow-left', ['List']) }}
+  {{ build_breadcrumb(_('Outcalls'), '', 'long-arrow-left', [_('List')]) }}
 {% endblock %}
 
 {% block content %}
@@ -20,7 +20,7 @@
         {% call build_tabs_content() %}
 
           {% call build_tab_content_item('outcall', active=True) %}
-            {% call add_default_fields(form=form, submit_value="Update") %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ render_field(form.name) }}
               {{ render_field(form.description) }}
               {{ render_field(form.trunks_id, data_listing_href=url_for(listing_urls['trunk'])) }}
@@ -31,7 +31,7 @@
           {% endcall %}
 
           {% call build_tab_content_item('extensions') %}
-            {% call add_default_fields(form=form, submit_value="Update") %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
               {{ build_add_row_entry_header() }}
               {% call build_table() %}
 
@@ -60,22 +60,22 @@
           {% endcall %}
 
           {% call build_tab_content_item('schedule') %}
-            {% call add_default_fields(form=form, submit_value="Update") %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.schedules[0]['name']) }}
                 {{ render_field(form.schedules[0]['id'],
                                 data_listing_href=url_for(listing_urls['schedule']),
                                 data_allow_clear=True,
-                                data_placeholder='Choose Schedules') }}
+                                data_placeholder=_('Choose Schedules')) }}
             {% endcall %}
           {% endcall %}
 
           {% call build_tab_content_item('callpermission') %}
-            {% call add_default_fields(form=form, submit_value="Update") %}
+            {% call add_default_fields(form=form, submit_value=_('Update')) %}
                 {{ render_field(form.call_permissions[0]['name']) }}
                 {{ render_field(form.call_permissions[0]['id'],
                                 data_listing_href=url_for(listing_urls['callpermission']),
                                 data_allow_clear=True,
-                                data_placeholder='Choose Call Permissions') }}
+                                data_placeholder=_('Choose Call Permissions')) }}
             {% endcall %}
           {% endcall %}
 
@@ -97,7 +97,7 @@
     <td>{{ render_field(extension.context,
                         with_label=False,
                         class_='outcall-context',
-                        placeholder='Choose Context',
+                        placeholder=_('Choose Context'),
                         data_listing_href=url_for(listing_urls['context_by_type'], type_='outcall')) }}</td>
     <td>{{ render_field(extension.exten, with_label=False) }}</td>
     <td>{{ render_field(extension.caller_id, with_label=False) }}</td>

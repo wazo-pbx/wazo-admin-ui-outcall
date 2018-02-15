@@ -19,12 +19,12 @@ from wazo_admin_ui.helpers.form import BaseForm
 
 
 class ScheduleForm(BaseForm):
-    id = SelectField('Schedule', choices=[])
+    id = SelectField(l_('Schedule'), choices=[])
     name = HiddenField()
 
 
 class CallpermissionsForm(BaseForm):
-    id = SelectField('Call Permissions', choices=[])
+    id = SelectField(l_('Call Permissions'), choices=[])
     name = HiddenField()
 
 
