@@ -100,11 +100,11 @@ class OutcallService(BaseConfdService):
 
     def _update_callpermissions_relations(self, outcall):
         call_permissions = outcall.get('call_permissions')
-        if call_permissions:
-            existing_outcall = confd.outcalls.get(outcall)
-            if existing_outcall['call_permissions']:
-                call_permission_id = existing_outcall['call_permissions'][0]['id']
-                confd.outcalls(outcall).remove_call_permission(call_permission_id)
+        existing_resource = confd.outcalls.get(outcall)
+        if existing_resource and existing_resource.get('call_permissions'):
+            for existing_call_permission in existing_resource['call_permissions']:
+                confd.outcalls(outcall).remove_call_permission(existing_call_permission['id'])
 
-            if call_permissions[0].get('id'):
-                confd.outcalls(outcall).add_call_permission(call_permissions[0])
+        if call_permissions:
+            for call_permission in call_permissions:
+                confd.outcalls(outcall).add_call_permission(call_permission['id'])

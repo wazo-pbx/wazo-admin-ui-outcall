@@ -23,8 +23,8 @@ class ScheduleForm(BaseForm):
     name = HiddenField()
 
 
-class CallpermissionsForm(BaseForm):
-    id = SelectField(l_('Call Permissions'), choices=[])
+class CallPermissionForm(BaseForm):
+    id = HiddenField()
     name = HiddenField()
 
 
@@ -53,5 +53,6 @@ class OutcallForm(BaseForm):
     internal_caller_id = BooleanField(l_('Internal Caller ID'))
     ring_time = IntegerField(l_('Ring time'), [NumberRange(min=0)])
     schedules = FieldList(FormField(ScheduleForm), min_entries=1)
-    call_permissions = FieldList(FormField(CallpermissionsForm), min_entries=1)
+    call_permission_ids = SelectMultipleField(l_('Call Permissions'), choices=[])
+    call_permissions = FieldList(FormField(CallPermissionForm))
     submit = SubmitField(l_('Submit'))

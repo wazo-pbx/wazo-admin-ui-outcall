@@ -24,6 +24,7 @@ class OutcallView(BaseView):
         for extension in resource['extensions']:
             extension['prefix_'] = extension['prefix']
             del extension['prefix']
+        resource['call_permission_ids'] = [call_permission['id'] for call_permission in resource['call_permissions']]
         form = self.form(data=resource, trunks_id=trunks_id)
         return form
 
@@ -32,7 +33,7 @@ class OutcallView(BaseView):
         for form_extension in form.extensions:
             form_extension.context.choices = self._build_set_choices_context(form_extension)
         form.schedules[0].form.id.choices = self._build_set_choices_schedule(form.schedules[0])
-        form.call_permissions[0].form.id.choices = self._build_set_choices_callpermissions(form.call_permissions[0])
+        form.call_permission_ids.choices = self._build_set_choices_callpermissions(form.call_permissions)
         return form
 
     def _build_set_choices_context(self, extension):
@@ -64,10 +65,13 @@ class OutcallView(BaseView):
             return []
         return [(schedule.form.id.data, schedule.form.name.data)]
 
-    def _build_set_choices_callpermissions(self, callpermissions):
-        if not callpermissions.form.id.data or callpermissions.form.id.data == 'None':
-            return []
-        return [(callpermissions.form.id.data, callpermissions.form.name.data)]
+    def _build_set_choices_callpermissions(self, call_permissions):
+        results = []
+        for call_permission in call_permissions:
+            if not call_permission.form.id.data or call_permission.form.id.data == 'None':
+                return []
+            results.append((call_permission.form.id.data, call_permission.form.name.data))
+        return results
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
@@ -80,6 +84,8 @@ class OutcallView(BaseView):
                 extension['id'] = int(extension['id'])
             extension['prefix'] = extension['prefix_']
             del extension['prefix_']
+        resource['call_permissions'] = [{'id': call_permission_id} for call_permission_id in
+                                        form.call_permission_ids.data]
         return resource
 
     def _map_resources_to_form_errors(self, form, resources):
