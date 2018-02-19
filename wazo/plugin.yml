@@ -1,6 +1,6 @@
 name: admin-ui-outcall
 namespace: official
-version: 1.1.0-5
+version: 1.2.0-1
 author: Wazo Team
 display_name: Outcalls
 min_wazo_version: 18.02
@@ -11,4 +11,6 @@ depends:
   - name: admin-ui-context
     namespace: official
   - name: admin-ui-trunk
+    namespace: official
+  - name: admin-ui-callpermission
     namespace: official

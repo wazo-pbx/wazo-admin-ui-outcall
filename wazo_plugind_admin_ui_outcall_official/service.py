@@ -1,4 +1,4 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from wazo_admin_ui.helpers.confd import confd
@@ -6,7 +6,6 @@ from wazo_admin_ui.helpers.service import BaseConfdService
 
 
 class OutcallService(BaseConfdService):
-
     resource_confd = 'outcalls'
 
     def get_first_outcall_context(self):
@@ -23,16 +22,17 @@ class OutcallService(BaseConfdService):
         return confd.trunks.get(trunk_id)
 
     def create(self, outcall):
-        outcall['id'] = super(OutcallService, self).create(outcall)['id']
+        outcall['id'] = super().create(outcall)['id']
         self._update_trunks_relations(outcall)
         self._update_extensions_relations(outcall)
         self._update_schedules_relations(outcall)
 
     def update(self, outcall):
-        super(OutcallService, self).update(outcall)
+        super().update(outcall)
         self._update_trunks_relations(outcall)
         self._update_extensions_relations(outcall)
         self._update_schedules_relations(outcall)
+        self._update_callpermissions_relations(outcall)
 
     def _update_trunks_relations(self, outcall):
         if outcall.get('trunks'):
@@ -76,7 +76,6 @@ class OutcallService(BaseConfdService):
                                       context=extension['context'])['items']
         return items[0] if items else None
 
-
     def _update_or_associate_extension(self, outcall, extension):
         confd.extensions.update(extension)
         self._add_or_update_extension_relation(outcall, extension)
@@ -98,3 +97,14 @@ class OutcallService(BaseConfdService):
 
             if schedules[0].get('id'):
                 confd.outcalls(outcall).add_schedule(schedules[0])
+
+    def _update_callpermissions_relations(self, outcall):
+        call_permissions = outcall.get('call_permissions')
+        existing_resource = confd.outcalls.get(outcall)
+        if existing_resource and existing_resource.get('call_permissions'):
+            for existing_call_permission in existing_resource['call_permissions']:
+                confd.outcalls(outcall).remove_call_permission(existing_call_permission['id'])
+
+        if call_permissions:
+            for call_permission in call_permissions:
+                confd.outcalls(outcall).add_call_permission(call_permission['id'])

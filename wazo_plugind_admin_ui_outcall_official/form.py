@@ -1,15 +1,17 @@
-# Copyright 2017 The Wazo Authors  (see the AUTHORS file)
+# Copyright 2017-2018 The Wazo Authors  (see the AUTHORS file)
 # SPDX-License-Identifier: GPL-3.0+
 
 from flask_babel import lazy_gettext as l_
-from wtforms.fields import (SubmitField,
-                            BooleanField,
-                            StringField,
-                            SelectField,
-                            SelectMultipleField,
-                            FieldList,
-                            FormField,
-                            HiddenField)
+from wtforms.fields import (
+    SubmitField,
+    BooleanField,
+    StringField,
+    SelectField,
+    SelectMultipleField,
+    FieldList,
+    FormField,
+    HiddenField
+)
 from wtforms.fields.html5 import IntegerField
 from wtforms.validators import InputRequired, Length, NumberRange
 
@@ -17,7 +19,12 @@ from wazo_admin_ui.helpers.form import BaseForm
 
 
 class ScheduleForm(BaseForm):
-    id = SelectField('Schedule', choices=[])
+    id = SelectField(l_('Schedule'), choices=[])
+    name = HiddenField()
+
+
+class CallPermissionForm(BaseForm):
+    id = HiddenField()
     name = HiddenField()
 
 
@@ -46,4 +53,6 @@ class OutcallForm(BaseForm):
     internal_caller_id = BooleanField(l_('Internal Caller ID'))
     ring_time = IntegerField(l_('Ring time'), [NumberRange(min=0)])
     schedules = FieldList(FormField(ScheduleForm), min_entries=1)
+    call_permission_ids = SelectMultipleField(l_('Call Permissions'), choices=[])
+    call_permissions = FieldList(FormField(CallPermissionForm))
     submit = SubmitField(l_('Submit'))
