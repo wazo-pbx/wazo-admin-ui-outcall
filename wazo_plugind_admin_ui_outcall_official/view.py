@@ -66,12 +66,7 @@ class OutcallView(BaseView):
         return [(schedule.form.id.data, schedule.form.name.data)]
 
     def _build_set_choices_callpermissions(self, call_permissions):
-        results = []
-        for call_permission in call_permissions:
-            if not call_permission.form.id.data or call_permission.form.id.data == 'None':
-                return []
-            results.append((call_permission.form.id.data, call_permission.form.name.data))
-        return results
+        return [(call_permission.form.id.data, call_permission.form.name.data) for call_permission in call_permissions]
 
     def _map_form_to_resources(self, form, form_id=None):
         resource = super()._map_form_to_resources(form, form_id)
