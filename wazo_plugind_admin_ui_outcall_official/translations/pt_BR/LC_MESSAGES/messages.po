@@ -4,12 +4,15 @@
 # wazo_admin_ui_outcall project.
 # Wazo Dev Team <dev@wazo.community>, 2018.
 # 
+# Translators:
+# Roberto Xavier dos Santos <rxsantos@gmail.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: wazo_admin_ui_outcall 0.1\n"
 "Report-Msgid-Bugs-To: 'dev@wazo.community'\n"
 "POT-Creation-Date: 2018-02-27 13:42-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Roberto Xavier dos Santos <rxsantos@gmail.com>, 2018\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/wazo/teams/69545/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -21,124 +24,124 @@ msgstr ""
 #: wazo_plugind_admin_ui_outcall_official/form.py:22
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:15
 msgid "Schedule"
-msgstr ""
+msgstr "Cronograma"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:33
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:39
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:33
 msgid "Context"
-msgstr ""
+msgstr "Contexto"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:34
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:40
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:34
 msgid "Extension"
-msgstr ""
+msgstr "Extensão"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:35
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:41
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:35
 msgid "Caller ID"
-msgstr ""
+msgstr "Caller ID"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:36
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:42
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:36
 msgid "External prefix"
-msgstr ""
+msgstr "Prefixo Externo"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:37
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:43
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:37
 msgid "Prefix"
-msgstr ""
+msgstr "Prefixo"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:38
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:44
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:38
 msgid "Strip digits"
-msgstr ""
+msgstr "Faixa de Dígitos"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:47
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:12
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:48
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:13
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:50
 msgid "Trunks"
-msgstr ""
+msgstr "Troncos"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:52
 msgid "Preprocess Subroutine"
-msgstr ""
+msgstr "Preprocesso de Sub-rotina"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:53
 msgid "Internal Caller ID"
-msgstr ""
+msgstr "Caller ID Interno"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:54
 msgid "Ring time"
-msgstr ""
+msgstr "Tempo de Toque"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:56
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:16
 msgid "Call Permissions"
-msgstr ""
+msgstr "Permissões de Chamada"
 
 #: wazo_plugind_admin_ui_outcall_official/form.py:58
 msgid "Submit"
-msgstr ""
+msgstr "Submeter"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:4
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:9
 #: wazo_plugind_admin_ui_outcall_official/view.py:18
 msgid "Outcalls"
-msgstr ""
+msgstr "Outcalls"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:4
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:4
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:12
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:13
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:4
 msgid "Outcall"
-msgstr ""
+msgstr "Outcall"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:14
 msgid "Extensions"
-msgstr ""
+msgstr "Extensões"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:23
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:34
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:63
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:73
 msgid "Update"
-msgstr ""
+msgstr "Atualizar"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:68
 msgid "Choose Schedules"
-msgstr ""
+msgstr "Escolher Cronogramas"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:77
 msgid "Choose Call Permissions"
-msgstr ""
+msgstr "Escolher Permissões de Chamada"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/edit.html:100
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:67
 msgid "Choose Context"
-msgstr ""
+msgstr "Escolher Contexto"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:22
 msgid "Add Outcall"
-msgstr ""
+msgstr "Adicionar Outcall"
 
 #: wazo_plugind_admin_ui_outcall_official/templates/outcall/list.html:24
 msgid "Add"
-msgstr ""
+msgstr "Adicionar"
